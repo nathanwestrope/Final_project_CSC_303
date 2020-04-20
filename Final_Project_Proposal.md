@@ -2,7 +2,6 @@ Final Project Proposal CSC 303
 -------------------------------------------------
 Nathan Westrope
 04/20/2020
------------
 Final Project Proposal option #2 adding and implementing feature(s) to an existing game
 
 
