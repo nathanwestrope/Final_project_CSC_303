@@ -1,6 +1,6 @@
 # Final Project Proposal CSC 303
 -------------------------------------------------
-**Nathan Westrope**
+## **Nathan Westrope**
 
 **04/20/2020**
 
