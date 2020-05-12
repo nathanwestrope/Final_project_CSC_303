@@ -4,26 +4,32 @@
 
 **04/20/2020**
 
-**Final Project Proposal option #2:** adding and implementing feature(s) to an existing game
+**Final Project Proposal option #1:** creating my own game
 
 
-**Adding features to:** A Mario-type Platformer (2017)
-(https://github.com/SamBumgardner/csc-303-platformer-2017)
 
-**New Branch Name:** “Platformer Reloaded II”
+**Game Name:** “welcome to hell, Now run!”
 
 ## Description
 
-**new features to add:**
+a game where your your objective is to stay alive as long as possable while avoiding fireballs and picking up coins.
+the longer you survive plus the more coins you collect the higher you score. the player has no weapons and must move to stay alive.
 
-* guns
+**features**
 
-* 
+* coins
 
-* 
+* player that can run
+
+* fireballs(avoid)
+
+* Timer counting up
+
 
 **List of classes:**
 
-* 
+* player class
 
-* 
+* coin class
+
+* fireball class
