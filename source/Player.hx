@@ -33,7 +33,7 @@ class Player extends FlxSprite
     }
     function screenWrapping()
     {
-        // If the players location is off screen 
+     
         if (x > FlxG.width)
         {
             x = 0;
@@ -42,8 +42,16 @@ class Player extends FlxSprite
         {
             x = FlxG.width;
         }
+        if (y > FlxG.height)
+        {
+            y = 0;
+        }
+        if (y < 0)
+        {
+            y = FlxG.height;
+        }
         
-        // appear on other side of the screen
+        
     }
     function updateMovement()
     {

@@ -10,39 +10,40 @@ class MenuState extends FlxState
 {
    override public function create():Void
    {
-      var playButton:FlxButton;
-      playButton = new FlxButton(0, 0, "Play", clickPlay);
-      add(playButton);
-
-      playButton.screenCenter();
       
-      var text = new FlxText(100, 200, 0, "Welcome to hell! Now Run!", 25, true);
-		add(text);
+      
       for (i in 0...15)
       {
-         var spr = new Hero(100, 100);
+         var spr = new Graphics(100, 100);
          add(spr);
       }
    
       for (i in 0...15)
       {
-         var spr = new Hero(0, 0);
+         var spr = new Graphics(0, 0);
          add(spr);
       }
          
       for (i in 0...15)
       {
-         var spr = new Hero(450, 350);
+         var spr = new Graphics(450, 350);
          add(spr);
       }
    
       for (i in 0...15)
       {
-         var spr = new Hero(500, 550);
+         var spr = new Graphics(500, 550);
          add(spr);
       }
+      var text = new FlxText(100, 200, 0, "Welcome to hell! Now Run!", 25, true);
+      add(text);
       
-	
+      var playButton:FlxButton;
+      playButton = new FlxButton(0, 0, "Play", clickPlay);
+      add(playButton);
+
+      playButton.screenCenter();
+
       super.create();
    }
 
@@ -54,6 +55,6 @@ class MenuState extends FlxState
    
    function clickPlay()
    {
-     FlxG.switchState(new PlayState());
+     FlxG.switchState(new PlayStateLev1());
    }
 }
