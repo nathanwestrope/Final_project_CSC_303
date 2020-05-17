@@ -13,9 +13,9 @@ import flixel.FlxState;
 
 class PlayStateLev1 extends FlxState
 {
-	var Fireballsgroup = new FlxTypedGroup<Fireballs>(10);
+	var fireballsgroup = new FlxTypedGroup<Fireballs>(10);
 	var player:Player;
-	
+	var timer:Float = 0;
 	
 
 	override public function create():Void
@@ -26,6 +26,7 @@ class PlayStateLev1 extends FlxState
 		{
 			var fireballs = new Fireballs(FlxG.random.int(-200, 200), FlxG.random.int(-400, 400));
 			add(fireballs);
+			fireballsgroup.add(fireballs);
 		}
 
 		player = new Player(20, 20);
@@ -36,12 +37,24 @@ class PlayStateLev1 extends FlxState
 
 	override public function update(elapsed:Float):Void
 	{
-		
-		
+		timer = timer + elapsed;
+
+		if (timer > 60)
+		{
+			trace("next level");
+		}
+
+		FlxG.overlap(player, fireballsgroup, collisionAction);
+			
 		super.update(elapsed);
 
 	}
-	
+	function collisionAction(player:Player, fireballs:Fireballs )
+	{
+		
+		FlxG.switchState(new DeadState());
+			
+	}
 	
 		
 			

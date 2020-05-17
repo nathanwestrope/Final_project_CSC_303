@@ -33,6 +33,6 @@ class DeadState extends FlxState
 
     function clickRetry()
     {
-        FlxG.switchState(new PlayState());
+        FlxG.switchState(new PlayStateLev1());
     }
 }
