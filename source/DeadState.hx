@@ -23,6 +23,7 @@ class DeadState extends FlxState
         var text = new FlxText(100, 200, 0, "you died", 25, true);
         add(text);
 
+
         super.create();
     }
 

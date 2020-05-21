@@ -13,7 +13,8 @@ import flixel.FlxSprite;
      public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
      {
         super(X, Y, SimpleGraphic);
-        this.makeGraphic(16, 16, FlxColor.RED);
+        this.loadGraphic(AssetPaths.fireball__png, false, 16, 16);
+        //this.makeGraphic(16, 16, FlxColor.RED);
         this.velocity.set(FlxG.random.int(-50, 50), FlxG.random.int(-50, 50));
      }
      override public function update(elapsed:Float):Void
@@ -36,9 +37,9 @@ import flixel.FlxSprite;
         }
         if (y > FlxG.height)
         {
-            y = 0;
+            y = 19;
         }
-        if (y < 0)
+        if (y < 19)
         {
             y = FlxG.height;
         }

@@ -35,8 +35,10 @@ class MenuState extends FlxState
          var spr = new Graphics(500, 550);
          add(spr);
       }
-      var text = new FlxText(100, 200, 0, "Welcome to hell! Now Run!", 25, true);
+
+      var text = new FlxText(10, 200, 0, "Welcome to hell! How long can you last?", 25, true);
       add(text);
+      
       
       var playButton:FlxButton;
       playButton = new FlxButton(0, 0, "Play", clickPlay);

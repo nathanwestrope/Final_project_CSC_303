@@ -44,9 +44,9 @@ class Player extends FlxSprite
         }
         if (y > FlxG.height)
         {
-            y = 0;
+            y = 19;
         }
-        if (y < 0)
+        if (y < 19)
         {
             y = FlxG.height;
         }
