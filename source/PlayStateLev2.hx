@@ -1,6 +1,5 @@
 package;
 
-
 import haxe.Timer;
 import flixel.util.FlxColor;
 import flixel.FlxObject;
@@ -12,27 +11,35 @@ import flixel.util.FlxTimer;
 import haxe.display.Protocol.HaxeResponseErrorData;
 import flixel.text.FlxText;
 import flixel.FlxState;
+
 using flixel.util.FlxSpriteUtil;
 
-
-class PlayStateLev1 extends FlxState
+class PlayStateLev2 extends FlxState
 {
-	var fireballsgroup = new FlxTypedGroup<Fireballs>(15);
+	var fireballsgroup = new FlxTypedGroup<Fireballs>(25);
 	var player:Player;
 	var timeCount:Float;
 	var background1 = new FlxSprite();//actual background
 	var background = new FlxSprite();//background of top bar
 	var time:FlxText;
 	var titleText:FlxText;
+	var levelLable:FlxText;
 	var level:FlxText;
-	var levelNum:Int = 1;
+	var levelNum:Int;
 	
+	
+	public function new(timeCount:Float, levelNum:Int)
+	{
+		super();
+		this.timeCount = timeCount;
+		this.levelNum = levelNum;
+		
+	}
 
 
 	override public function create():Void
 	{
-		timeCount = 0;
-
+		levelNum = levelNum + 1;
 		background1.makeGraphic(FlxG.width, FlxG.height, FlxColor.YELLOW);
 		add(background1);
 
@@ -47,21 +54,27 @@ class PlayStateLev1 extends FlxState
 		add(time);
 		add(timeLable);
 
-		level = new FlxText(250, 2, 0, "Level: 1", 8);
+		levelLable = new FlxText(250, 2, 0, "Level: ", 8);
+		levelLable.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
+		add(levelLable);
+
+		level = new FlxText(250, 2, 0, "0", 8);
 		level.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
 		add(level);
+		level.text = Std.string(levelNum);
 		
-		titleText = new FlxText(0, 0, 0, "Welcome to hell! Now Run!", 25, true);
+		titleText = new FlxText(0, 0, 0, "Level 2", 25, true);
 		titleText.setBorderStyle(SHADOW, FlxColor.BLACK, 1, 1);
-      	add(titleText);
-		titleText.screenCenter();
+		add(titleText);
+		titleText.screenCenter();  
 		
+
 
 		player = new Player(20, 20);
 		add(player);
 
 
-		for (i in 0...15)
+		for (i in 0...25)
 		{
 			var fireballs = new Fireballs(FlxG.random.int(-200, 200), FlxG.random.int(-400, 400));
 			add(fireballs);
@@ -79,14 +92,14 @@ class PlayStateLev1 extends FlxState
 		timeCount = timeCount + elapsed;
 		time.text = Std.string(timeCount);
 
-		if (timeCount >= 30)
-		{
-			FlxG.switchState(new PlayStateLev2(timeCount , levelNum));
-		}
-
-		if(timeCount <= 5 )
+		if (timeCount >= 120)
 		{
 			
+		}
+
+		if(timeCount <= 35 )
+		{
+			//FlxG.switchState(new PlayStateLev3(timeCount, levelNum));
 		}
 		else
 		{
