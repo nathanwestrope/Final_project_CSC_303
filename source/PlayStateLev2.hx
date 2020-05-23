@@ -16,7 +16,7 @@ using flixel.util.FlxSpriteUtil;
 
 class PlayStateLev2 extends FlxState
 {
-	var fireballsgroup = new FlxTypedGroup<Fireballs>(10);
+	var fireballsgroup = new FlxTypedGroup<Fireballs>(60);
 	var player:Player;
 	var timeCount:Float;
 	var background1 = new FlxSprite();//actual background
@@ -28,13 +28,12 @@ class PlayStateLev2 extends FlxState
 	var levelNum:Int;
 	
 	
-	public function new(timeCount:Float, levelNum:Int, player:Player)
+	public function new(timeCount:Float, levelNum:Int, player:Player, fireballsgroup:FlxTypedGroup<Fireballs>)
 	{
 		super();
 		this.timeCount = timeCount;
 		this.levelNum = levelNum;
 		this.player = player;
-		//this.fireballsgroup = fireballsgroup;
 	}
 
 
@@ -75,7 +74,7 @@ class PlayStateLev2 extends FlxState
 
 		
 
-		for (i in 0...10)
+		for (i in 0...25)
 		{
 			var fireballs = new Fireballs(FlxG.random.int(-200, 200), FlxG.random.int(-400, 400));
 			add(fireballs);
@@ -93,14 +92,14 @@ class PlayStateLev2 extends FlxState
 		timeCount = timeCount + elapsed;
 		time.text = Std.string(timeCount);
 
-		if (timeCount >= 120)
+		if (timeCount >= 60)
 		{
-			
+			FlxG.switchState(new PlayStateLev3(timeCount, levelNum, player, fireballsgroup));
 		}
 
 		if(timeCount <= 35 )
 		{
-			//FlxG.switchState(new PlayStateLev3(timeCount, levelNum));
+			
 		}
 		else
 		{
