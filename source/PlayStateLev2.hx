@@ -16,7 +16,7 @@ using flixel.util.FlxSpriteUtil;
 
 class PlayStateLev2 extends FlxState
 {
-	var fireballsgroup = new FlxTypedGroup<Fireballs>(25);
+	var fireballsgroup = new FlxTypedGroup<Fireballs>(10);
 	var player:Player;
 	var timeCount:Float;
 	var background1 = new FlxSprite();//actual background
@@ -28,19 +28,20 @@ class PlayStateLev2 extends FlxState
 	var levelNum:Int;
 	
 	
-	public function new(timeCount:Float, levelNum:Int)
+	public function new(timeCount:Float, levelNum:Int, player:Player)
 	{
 		super();
 		this.timeCount = timeCount;
 		this.levelNum = levelNum;
-		
+		this.player = player;
+		//this.fireballsgroup = fireballsgroup;
 	}
 
 
 	override public function create():Void
 	{
 		levelNum = levelNum + 1;
-		background1.makeGraphic(FlxG.width, FlxG.height, FlxColor.YELLOW);
+		background1.makeGraphic(FlxG.width, FlxG.height, FlxColor.ORANGE);
 		add(background1);
 
 		background = new FlxSprite().makeGraphic(FlxG.width, 20, FlxColor.BLACK);
@@ -58,10 +59,9 @@ class PlayStateLev2 extends FlxState
 		levelLable.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
 		add(levelLable);
 
-		level = new FlxText(250, 2, 0, "0", 8);
+		level = new FlxText(280, 2, 0, Std.string(levelNum), 8);
 		level.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
 		add(level);
-		level.text = Std.string(levelNum);
 		
 		titleText = new FlxText(0, 0, 0, "Level 2", 25, true);
 		titleText.setBorderStyle(SHADOW, FlxColor.BLACK, 1, 1);
@@ -70,11 +70,12 @@ class PlayStateLev2 extends FlxState
 		
 
 
-		player = new Player(20, 20);
+		player = new Player(player.x, player.y);
 		add(player);
 
+		
 
-		for (i in 0...25)
+		for (i in 0...10)
 		{
 			var fireballs = new Fireballs(FlxG.random.int(-200, 200), FlxG.random.int(-400, 400));
 			add(fireballs);

@@ -26,8 +26,8 @@ class PlayStateLev1 extends FlxState
 	var titleText:FlxText;
 	var level:FlxText;
 	var levelNum:Int = 1;
+	var levelLable:FlxText;
 	
-
 
 	override public function create():Void
 	{
@@ -47,10 +47,16 @@ class PlayStateLev1 extends FlxState
 		add(time);
 		add(timeLable);
 
-		level = new FlxText(250, 2, 0, "Level: 1", 8);
+
+		levelLable = new FlxText(250, 2, 0, "Level: ", 8);
+		levelLable.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
+		add(levelLable);
+
+		level = new FlxText(280, 2, 0, Std.string(levelNum), 8);
 		level.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
 		add(level);
 		
+
 		titleText = new FlxText(0, 0, 0, "Welcome to hell! Now Run!", 25, true);
 		titleText.setBorderStyle(SHADOW, FlxColor.BLACK, 1, 1);
       	add(titleText);
@@ -74,14 +80,14 @@ class PlayStateLev1 extends FlxState
 
 	override public function update(elapsed:Float):Void
 	{
-
+		
 
 		timeCount = timeCount + elapsed;
 		time.text = Std.string(timeCount);
 
 		if (timeCount >= 30)
 		{
-			FlxG.switchState(new PlayStateLev2(timeCount , levelNum));
+			FlxG.switchState(new PlayStateLev2(timeCount, levelNum, player));
 		}
 
 		if(timeCount <= 5 )
