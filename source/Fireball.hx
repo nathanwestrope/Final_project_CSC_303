@@ -7,7 +7,7 @@ import flixel.FlxSprite;
 
 
 
- class Fireballs extends FlxSprite
+ class Fireball extends FlxSprite
 {
 
      public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
